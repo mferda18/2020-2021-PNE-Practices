@@ -1,13 +1,16 @@
 import termcolor
+from pathlib import Path
 
 class Seq:
     """A class for representing sequences"""
     #Inside of a class the order of the sequences does not matter
+    NULL_SEQUENCE = "NULL"
+    INVALID_SEQUENCE = "ERROR"
 
-    def __init__(self, strbases="NULL"):
+    def __init__(self, strbases = NULL_SEQUENCE):
         # Initialize the sequence with the value
         # passed as argument when creating the object
-        if strbases == "NULL":
+        if strbases == Seq.NULL_SEQUENCE:
             print("NULL Seq created")
             self.strbases = strbases
         else:
@@ -15,11 +18,8 @@ class Seq:
                 print("New sequence created!")
                 self.strbases = strbases
             else:
-                self.strbases = "Error"
+                self.strbases = Seq.INVALID_SEQUENCE
                 print("INCORRECT Sequence detected")
-
-
-
 
     @staticmethod
     def is_valid_sequence_2(bases):
@@ -48,15 +48,68 @@ class Seq:
 
     def len(self):
         """Calculate the length of the sequence"""
-        if self.strbases == "NULL" or self.strbases == "Error":
+        if self.strbases == Seq.NULL_SEQUENCE or self.strbases == Seq.INVALID_SEQUENCE:
             return 0
         else:
             return len(self.strbases)
 
+    def count_bases(self):
+        a, c, g, t = 0, 0, 0, 0
+        if not (self.strbases == Seq.NULL_SEQUENCE) and not (self.strbases == Seq.INVALID_SEQUENCE):
+            for e in self.strbases:
+                if e == "A":
+                    a += 1
+                if e == "C":
+                    c += 1
+                if e == "G":
+                    g += 1
+                if e == "T":
+                    t += 1
+        return a, c, g, t
 
-def generate_seqs(pattern, number):
-    #A, 3
-    list_seq = []
-    for i in range(0, number):
-        list_seq.append(Seq(pattern * (i + 1)))
-    return list_seq
+    def count(self):
+        a, c, g, t = self.count_bases()
+        return {"A": a, "C": c, "T": t, "G": g}
+
+    def reverse(self):
+        if self.strbases == Seq.NULL_SEQUENCE:
+            return Seq.NULL_SEQUENCE
+        elif self.strbases == Seq.INVALID_SEQUENCE:
+            return Seq.INVALID_SEQUENCE
+        else:
+            return self.strbases[::-1]
+
+    def complement(self):
+        if self.strbases == Seq.NULL_SEQUENCE:
+            return Seq.NULL_SEQUENCE
+        elif self.strbases == Seq.INVALID_SEQUENCE:
+            return Seq.INVALID_SEQUENCE
+        else:
+            complement = ""
+            for e in self.strbases:
+                if e == "A":
+                    complement += "T"
+                if e == "C":
+                    complement += "G"
+                if e == "G":
+                    complement += "C"
+                if e == "T":
+                    complement += "A"
+            return complement
+
+    @staticmethod
+    def take_out_first_line(seq):
+        return seq[seq.find("\n") + 1:].replace("\n", "")
+
+    def read_fasta(self, filename):
+        self.strbases = Seq.take_out_first_line(Path(filename).read_text())
+
+
+def test_sequences():
+    s1 = Seq()
+    s2 = Seq("ACTGA")
+    s3 = Seq("Invalid Sequence")
+    return s1, s2, s3
+
+
+
