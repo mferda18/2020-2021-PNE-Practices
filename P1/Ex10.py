@@ -8,4 +8,4 @@ print("-----| Exercise 10 |------")
 for gene in gene_list:
     sequence = Seq()
     sequence.read_fasta(PROJECT_PATH + gene + ".txt")
-    print("Gene", gene, ": Most frequent Base:", sequence.frequent_base(sequence))
+    print("Gene", gene, ": Most frequent Base:", sequence.frequent_base())

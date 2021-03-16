@@ -105,7 +105,6 @@ class Seq:
         self.strbases = Seq.take_out_first_line(Path(filename).read_text())
         return self.strbases
 
-    @staticmethod
     def frequent_base(self):
         gene_dict = {"A": 0, "T": 0, "C": 0, "G": 0}
         for d in self.strbases:
