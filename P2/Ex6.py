@@ -20,5 +20,4 @@ while i < len(s.strbases) and count < 5:
     fragment = s.strbases[i:i+10]
     count += 1
     i += 10
-    print("Fragment", count, ":", fragment)
-    print(c.talk(fragment))
+    c.debug_talk("Fragment " + str(count) + ": " + fragment)

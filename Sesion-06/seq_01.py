@@ -22,16 +22,16 @@ class Seq:
                 return False
         return True
 
-    def is_valid_sequence(self):
-        for c in self.strbases:
-            if c != "A" and c != "C" and c != "G" and c != "T":
-                return False
-        return True
+    #def is_valid_sequence(self):
+        #for c in self.strbases:
+            #if c != "A" and c != "C" and c != "G" and c != "T":
+                #return False
+        #return True
 
     @staticmethod
     def print_seqs(list_sequences):
         for i in range(0, len(list_sequences)):
-            text = "Sequence" + str(i) + ": (Length:" + str(list_sequences[i].len()) + ")" + str(list_sequences[i])
+            text = "Sequence " + str(i) + ": (Length: " + str(list_sequences[i].len()) + ") " + str(list_sequences[i])
             termcolor.cprint(text, "yellow")
 
     def __str__(self):

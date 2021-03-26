@@ -20,12 +20,12 @@ s = Seq()
 s.read_fasta("../Sesion-04/FRAT1.txt")
 count = 0
 i = 0
-while i < len(s.strbases) and count < 5:
+while i < len(s.strbases) and count < 10:
     fragment = s.strbases[i:i+10]
     count += 1
     i += 10
     print("Fragment", count, ":", fragment)
     if count % 2 == 0:
-        print(c_2.talk("Fragment " + str(count) + ": " + fragment))
+        c_2.debug_talk("Fragment " + str(count) + ": " + fragment)
     else:
-        print(c.talk("Fragment " + str(count) + ": " + fragment))
+        c.debug_talk("Fragment " + str(count) + ": " + fragment)

@@ -2,7 +2,7 @@ from Seq1 import Seq, test_sequences
 
 
 def print_result(i, sequence):
-    print("Sequence" + str(i) + ": (Length: " + str(sequence.len()) + ") " + str(sequence))
+    print("Sequence " + str(i) + ": (Length: " + str(sequence.len()) + ") " + str(sequence))
     print("Bases:", sequence.count())
 
 

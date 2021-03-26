@@ -1,4 +1,7 @@
 import socket
+import termcolor
+import subprocess
+subprocess.call("", shell = True)
 
 # Configure the Server's IP and PORT
 PORT = 5000
@@ -29,9 +32,10 @@ try:
 
         # Read the message from the client, if any
         msg = clientsocket.recv(2048).decode("utf-8")
-        print("Message from client: {}".format(msg))
+        print("Message from client: ", end=""), termcolor.cprint(str(format(msg)), "green")
 
-        # Send the messag
+
+        # Send the message
         message = "Hello from the teacher's server"
         # We must write bytes, not a string
         clientsocket.send(message.encode())
