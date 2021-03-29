@@ -21,7 +21,7 @@ class Client:
             print("Could not connect to the server. Is it running? Have you checked the IP and the PORT?")
 
     def __str__(self):
-        return "Connection to SERVER at " + self.ip +  ", PORT: " + str(self.port)
+        return "Connection to SERVER at " + self.ip + ", PORT: " + str(self.port)
 
     def talk(self, msg):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -50,5 +50,3 @@ class Client:
         s.close()
         # Return the response
         return print("From server: \n \n", end=""), termcolor.cprint(str(response), "green"), print("")
-
-

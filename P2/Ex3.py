@@ -9,4 +9,4 @@ print(f"-----| Practice {PRACTICE}, Exercise {EXERCISE} |------")
 IP = "127.0.0.1"
 PORT = 5000
 c = Client(IP, PORT)
-print("Response:", c.talk("This is something random"))
+print("Response:\n \n", c.talk("Hello from the teacher's server"))

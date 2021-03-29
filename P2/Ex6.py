@@ -13,7 +13,7 @@ PORT = 5000
 c = Client(IP, PORT)
 
 s = Seq()
-s.read_fasta("../Sesion-04/FRAT1.txt")
+s.read_fasta("../Session-04/FRAT1.txt")
 count = 0
 i = 0
 while i < len(s.strbases) and count < 5:
