@@ -53,18 +53,12 @@ while True:
         print(f"Message received: {msg}")
 
         # -- Send a response message to the client
-        try:
-            response = int(msg) ** int(msg)
-            print("Response:", response)
-            # -- The message has to be encoded into bytes
-            cs.send(str(response).encode())
-        except ValueError:
-            cs.send("We need a number".encode())
-
+        response = "ECHO: " + msg
+        # -- The message has to be encoded into bytes
+        cs.send(str(response).encode())
         # -- Close the data socket
         cs.close()
         if count_connections == 5:
             for i in range(0, len(client_address_list)):
                 print("Client " + str(i) + ": Client IP, PORT: ", str(client_address_list[i]))
             exit(0)
-

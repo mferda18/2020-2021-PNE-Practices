@@ -1,4 +1,5 @@
 import socket
+import server_utils
 
 # Configure the Server's IP and PORT
 PORT = 8080
@@ -37,34 +38,27 @@ while True:
         exit()
 
     # -- Execute this part if there are no errors
-    else:
 
-        print("A client has connected to the server!")
+    # -- Read the message from the client
+    # -- The received message is in raw bytes
+    msg_raw = cs.recv(2048)
 
-        # -- Read the message from the client
-        # -- The received message is in raw bytes
-        msg_raw = cs.recv(2048)
+    # -- We decode it for converting it
+    # -- into a human-redeable string
+    msg = msg_raw.decode()
 
-        # -- We decode it for converting it
-        # -- into a human-redeable string
-        msg = msg_raw.decode()
+    formatted_message = server_utils.format_command(msg)
+    print(formatted_message)
 
-        # -- Print the received message
-        print(f"Message received: {msg}")
-
+    if formatted_message == "PING":
+        server_utils.ping()
         # -- Send a response message to the client
-        try:
-            response = int(msg) ** int(msg)
-            print("Response:", response)
-            # -- The message has to be encoded into bytes
-            cs.send(str(response).encode())
-        except ValueError:
-            cs.send("We need a number".encode())
-
-        # -- Close the data socket
-        cs.close()
-        if count_connections == 5:
-            for i in range(0, len(client_address_list)):
-                print("Client " + str(i) + ": Client IP, PORT: ", str(client_address_list[i]))
-            exit(0)
+        response = "OK"
+        # -- The message has to be encoded into bytes
+        cs.send(str(response).encode())
+    else:
+        response = "Not available command"
+        cs.send(str(response).encode())
+    # -- Close the data socket
+    cs.close()
 
