@@ -115,6 +115,17 @@ class Seq:
         position = count.index(most_frequent)
         return key_list[position]
 
+    def percentage(self):
+        total = len(self.strbases)
+        a, c, g, t = self.count_bases()
+        p_a = (a / total) * 100
+        p_c = (c / total) * 100
+        p_g = (g / total) * 100
+        p_t = (t / total) * 100
+        return p_a, p_c, p_g, p_t
+
+
+
 
 def test_sequences():
     s1 = Seq()

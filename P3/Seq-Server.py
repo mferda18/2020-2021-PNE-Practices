@@ -1,6 +1,8 @@
 import socket
 import server_utils
 
+list_sequences = ["AAACCCGGGTTGGCAGGGA", "CCCGGTAAGCTAGCTAG", "CCGATCGATGGCC", "TTCGAAATCCCTTAA", "ATCGATCGA"]
+
 # Configure the Server's IP and PORT
 PORT = 8080
 IP = "127.0.0.1"
@@ -48,14 +50,44 @@ while True:
     msg = msg_raw.decode()
 
     formatted_message = server_utils.format_command(msg)
-    print(formatted_message)
+    formatted_message = formatted_message.split(" ")
 
-    if formatted_message == "PING":
-        server_utils.ping()
-        # -- Send a response message to the client
-        response = "OK"
-        # -- The message has to be encoded into bytes
-        cs.send(str(response).encode())
+    if len(formatted_message) == 1:
+        command = formatted_message[0]
+    else:
+        command = formatted_message[0]
+        argument = formatted_message[1]
+
+    if command == "PING":
+        server_utils.ping(cs)
+
+    elif command == "GET":
+        server_utils.get(cs, list_sequences, argument)
+
+    elif command == "INFO":
+        if len(formatted_message) == 1:
+            argument = list_sequences[0]
+            server_utils.info(cs, argument)
+        else:
+            server_utils.info(cs, argument)
+
+    elif command == "COMP":
+        if len(formatted_message) == 1:
+            argument = list_sequences[0]
+            server_utils.comp(cs, argument)
+        else:
+            server_utils.comp(cs, argument)
+
+    elif command == "REV":
+        if len(formatted_message) == 1:
+            argument = list_sequences[0]
+            server_utils.rev(cs, argument)
+        else:
+            server_utils.rev(cs, argument)
+
+    elif command == "GENE":
+        server_utils.gene(cs, argument)
+
     else:
         response = "Not available command"
         cs.send(str(response).encode())
