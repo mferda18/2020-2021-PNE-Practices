@@ -33,7 +33,7 @@ while True:
     except KeyboardInterrupt:
         print("Server stopped by the user")
 
-        # -- Close the listenning socket
+        # -- Close the listening socket
         ls.close()
 
         # -- Exit!
@@ -46,7 +46,7 @@ while True:
     msg_raw = cs.recv(2048)
 
     # -- We decode it for converting it
-    # -- into a human-redeable string
+    # -- into a human-readable string
     msg = msg_raw.decode()
 
     formatted_message = server_utils.format_command(msg)
