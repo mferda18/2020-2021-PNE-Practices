@@ -1,5 +1,5 @@
 import socket
-import server_utils
+import termcolor
 import pathlib
 from urllib.parse import urlparse, parse_qs
 
@@ -33,7 +33,7 @@ def process_client(s):
     print("Resource requested: ", path_name)
     print("Parameters:", arguments)
 
-    server_utils.print_colored(req_line, "green")
+    termcolor.cprint(req_line, "green")
 
     # -- Generate the response message
     # It has the following lines
