@@ -27,6 +27,7 @@ def read_template_html_file(filename):
     content = Template(pathlib.Path(filename).read_text())
     return content
 
+
 def get(list_sequences, seq_number):
     context = {
         "number": seq_number,
@@ -34,7 +35,6 @@ def get(list_sequences, seq_number):
     }
     contents = read_template_html_file("./html/get.html").render(context=context)
     return contents
-
 
 
 def info(sequence):
@@ -87,4 +87,3 @@ def gene(seq_name):
     }
     contents = read_template_html_file("./html/gene.html").render(context=context)
     return contents
-
