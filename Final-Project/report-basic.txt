@@ -1,0 +1,409 @@
+Test report basic level
+====================
+
+---> listSpecies endpoint
+
+
+*****TEST 1*****
+INPUT:
+http://localhost:8080/listSpecies?limit=30
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSERr</title>
+  </head>
+  <body style="background-color: lightskyblue;" >
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 30</p>
+    <p>The name of the species are:</p><br>
+
+        <ul>
+          <li>Little spotted kiwi</li>
+        </ul>
+
+        <ul>
+          <li>Indian glassy fish</li>
+        </ul>
+
+        <ul>
+          <li>Blue tit</li>
+        </ul>
+
+        <ul>
+          <li>Narwhal</li>
+        </ul>
+
+        <ul>
+          <li>American beaver</li>
+        </ul>
+
+        <ul>
+          <li>Lumpfish</li>
+        </ul>
+
+        <ul>
+          <li>Chinese hamster</li>
+        </ul>
+
+        <ul>
+          <li>Channel bull blenny</li>
+        </ul>
+
+        <ul>
+          <li>Golden hamster</li>
+        </ul>
+
+        <ul>
+          <li>Wild yak</li>
+        </ul>
+
+        <ul>
+          <li>Siamese fighting fish</li>
+        </ul>
+
+        <ul>
+          <li>Eastern happy</li>
+        </ul>
+
+        <ul>
+          <li>Cape rock hyrax</li>
+        </ul>
+
+        <ul>
+          <li>Eurasian eagle-owl</li>
+        </ul>
+
+        <ul>
+          <li>Japanese quail</li>
+        </ul>
+
+        <ul>
+          <li>Fugu</li>
+        </ul>
+
+        <ul>
+          <li>Asian bonytongue</li>
+        </ul>
+
+        <ul>
+          <li>Blue-ringed sea krait</li>
+        </ul>
+
+        <ul>
+          <li>Mouse</li>
+        </ul>
+
+        <ul>
+          <li>Agassiz's desert tortoise</li>
+        </ul>
+
+        <ul>
+          <li>Lyretail cichlid</li>
+        </ul>
+
+        <ul>
+          <li>Coho salmon</li>
+        </ul>
+
+        <ul>
+          <li>Oriental scops-owl</li>
+        </ul>
+
+        <ul>
+          <li>Zebra mbuna</li>
+        </ul>
+
+        <ul>
+          <li>Arctic ground squirrel</li>
+        </ul>
+
+        <ul>
+          <li>Clown anemonefish</li>
+        </ul>
+
+        <ul>
+          <li>Koala</li>
+        </ul>
+
+        <ul>
+          <li>Algerian mouse</li>
+        </ul>
+
+        <ul>
+          <li>Sheep</li>
+        </ul>
+
+        <ul>
+          <li>Mouse</li>
+        </ul>
+
+  </body>
+</html>
+
+
+*****TEST 2*****
+INPUT:
+http://localhost:8080/listSpecies?limit=5
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSERr</title>
+  </head>
+  <body style="background-color: lightskyblue;" >
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 5</p>
+    <p>The name of the species are:</p><br>
+
+        <ul>
+          <li>Little spotted kiwi</li>
+        </ul>
+
+        <ul>
+          <li>Indian glassy fish</li>
+        </ul>
+
+        <ul>
+          <li>Blue tit</li>
+        </ul>
+
+        <ul>
+          <li>Narwhal</li>
+        </ul>
+
+        <ul>
+          <li>American beaver</li>
+        </ul>
+
+  </body>
+</html>
+
+
+*****TEST 3*****
+INPUT:
+http://localhost:8080/listSpecies?limit=asdf
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body style="background-color: red;">
+<h1>Error</h1>
+<a href="/">Main page</a>
+</body>
+</html>
+
+
+---> /karyotype endpoint
+
+
+*****TEST 1*****
+INPUT:
+http://localhost:8080/karyotype?specie=human
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>KARYOTYPE OF A SPECIFIC SERIES</title>
+  </head>
+  <body style="background-color: lightskyblue;" >
+    <p>The names of the chromosomes are :</p>
+
+        1 <br>
+
+        2 <br>
+
+        3 <br>
+
+        4 <br>
+
+        5 <br>
+
+        6 <br>
+
+        7 <br>
+
+        8 <br>
+
+        9 <br>
+
+        10 <br>
+
+        11 <br>
+
+        12 <br>
+
+        13 <br>
+
+        14 <br>
+
+        15 <br>
+
+        16 <br>
+
+        17 <br>
+
+        18 <br>
+
+        19 <br>
+
+        20 <br>
+
+        21 <br>
+
+        22 <br>
+
+        X <br>
+
+        Y <br>
+
+        MT <br>
+
+  </body>
+</html>
+
+
+*****TEST 2*****
+INPUT:
+http://localhost:8080/karyotype?specie=coronavirus
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body style="background-color: red;">
+<h1>Error</h1>
+<a href="/">Main page</a>
+</body>
+</html>
+
+
+*****TEST 3*****
+INPUT:
+http://localhost:8080/karyotype?specie=mouse
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>KARYOTYPE OF A SPECIFIC SERIES</title>
+  </head>
+  <body style="background-color: lightskyblue;" >
+    <p>The names of the chromosomes are :</p>
+
+        1 <br>
+
+        2 <br>
+
+        3 <br>
+
+        4 <br>
+
+        5 <br>
+
+        6 <br>
+
+        7 <br>
+
+        8 <br>
+
+        9 <br>
+
+        10 <br>
+
+        11 <br>
+
+        12 <br>
+
+        13 <br>
+
+        14 <br>
+
+        15 <br>
+
+        16 <br>
+
+        17 <br>
+
+        18 <br>
+
+        19 <br>
+
+        X <br>
+
+        Y <br>
+
+        MT <br>
+
+  </body>
+</html>
+
+
+---> chromosomeLength endpoint
+
+
+*****TEST 1*****
+INPUT:
+http://localhost:8080/chromosomeLength?specie=human&chromo=20
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LENGTH OF THE SELECTED CHROMOSOME</title>
+  </head>
+  <body style="background-color: lightskyblue;" >
+    <p>The length of the chromosome is : 1040</p>
+  </body>
+</html>
+
+
+*****TEST 2*****
+INPUT:
+http://localhost:8080/chromosomeLength?specie=flower&chromo=20
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body style="background-color: red;">
+<h1>Error</h1>
+<a href="/">Main page</a>
+</body>
+</html>
+
+
+*****TEST 3*****
+INPUT:
+http://localhost:8080/chromosomeLength?specie=rabbit&chromo=happy
+
+OUTPUT:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body style="background-color: red;">
+<h1>Error</h1>
+<a href="/">Main page</a>
+</body>
+</html>
